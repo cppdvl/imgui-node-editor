@@ -506,7 +506,7 @@ bool    ImGui_ImplOpenGL3_CreateDeviceObjects()
     const GLchar* vertex_shader_glsl_120 =
         "uniform mat4 ProjMtx;\n"
         "attribute vec2 Position;\n"
-        "attribute vec2 UV;\n"
+        "attribute vec2 UV;\n"	
         "attribute vec4 Color;\n"
         "varying vec2 Frag_UV;\n"
         "varying vec4 Frag_Color;\n"
@@ -581,9 +581,9 @@ bool    ImGui_ImplOpenGL3_CreateDeviceObjects()
         "out vec4 Out_Color;\n"
         "void main()\n"
         "{\n"
-        "    vec4 col = Frag_Color * texture2D(Texture, Frag_UV.st);\n"
+        "    vec4 col = Frag_Color * texture(Texture, Frag_UV.st);\n"
         "    col.xyz *= col.w;"
-        "    gl_FragColor = col;\n"
+        "    Out_Color = col;\n"
         "}\n";
 
     const GLchar* fragment_shader_glsl_300_es =
